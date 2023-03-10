@@ -9,7 +9,7 @@
 .App {
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    height: 50vh;
+    height: calc(max(50vh, 600px));
 }
 
 .furnace,
@@ -32,8 +32,14 @@
     place-items: center;
 }
 .card {
-    height: 10vh;
-    border: 1px solid black;
+    height: calc(max(10rem, 10vh));
     border-radius: 1rem;
     aspect-ratio: 2/3;
+    cursor: move;
+    background: palegoldenrod;
+    box-shadow: 0.2rem 0.4rem 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+
+.dragged {
+    opacity: 20%;
 }

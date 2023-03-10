@@ -1,42 +1,39 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    font-size: 20px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 50vh;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.furnace,
+.auctionBoard {
+    color: black;
+    /* height: 20vh; */
+    display: grid;
+    place-items: center;
+}
+.furnace {
+    background: salmon;
+}
+.auctionBoard {
+    background: skyblue;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hand {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
 }
-
 .card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+    height: 10vh;
+    border: 1px solid black;
+    border-radius: 1rem;
+    aspect-ratio: 2/3;
 }

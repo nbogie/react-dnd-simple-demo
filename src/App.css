@@ -18,6 +18,10 @@
     /* height: 20vh; */
     display: grid;
     place-items: center;
+    width: 100%;
+}
+.hand {
+    width: 100%;
 }
 .furnace {
     background: salmon;
@@ -26,6 +30,9 @@
     background: skyblue;
 }
 
+.draggedOver {
+    outline: 0.4rem dashed gray;
+}
 .hand {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

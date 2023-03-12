@@ -1,42 +1,37 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { useDrag } from "react-dnd";
-import { ItemTypes } from "./itemTypes";
+import { AuctionBoard } from "./AuctionBoard";
+import { CardList } from "./CardList";
+import { Furnace } from "./Furnace";
+
+export type Card = string;
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [cards, setCards] = useState<string[]>(["10", "20", "30"]);
+    const [auctionCards, setAuctionCards] = useState<string[]>([]);
+
+    function placeCardInAuction(cardId: string) {
+        setCards((p) => p.filter((c) => c !== cardId));
+        setAuctionCards((prevCards) =>
+            prevCards.includes(cardId) ? prevCards : [...prevCards, cardId]
+        );
+    }
+
+    function placeCardInFurnace(cardId: string) {
+        setCards((p) => p.filter((c) => c !== cardId));
+    }
 
     return (
         <div className="App">
-            <div className="auctionBoard">Auction Board</div>
+            <AuctionBoard
+                cards={auctionCards}
+                placeCardInAuction={placeCardInAuction}
+            />
 
-            <div className="hand">
-                <CardC id={"C1"} />
-                <CardC id={"C2"} />
-                <CardC id={"C3"} />
-            </div>
-
-            <div className="furnace">Furnace</div>
+            <CardList cards={cards} />
+            <Furnace placeCardInFurnace={placeCardInFurnace} />
         </div>
     );
 }
 
 export default App;
-
-function CardC(props: { id: string }) {
-    const [{ isDragging }, dragRef] = useDrag(() => ({
-        type: ItemTypes.CARD,
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
-        }),
-    }));
-    return (
-        <div
-            className={"card " + (isDragging ? "dragged" : "static")}
-            ref={dragRef}
-        >
-            <div className="text">{props.id}</div>
-        </div>
-    );
-}
